@@ -149,7 +149,7 @@ end
 if __FILE__ == $0
   begin
     Bot2ch::App.new.execute('news4vip')
-  rescue => ex
+  rescue
     puts 'Network Error'
   end
 end
