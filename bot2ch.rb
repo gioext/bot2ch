@@ -146,4 +146,6 @@ module Bot2ch
   end
 end
 
-Bot2ch::App.new.execute('news4vip')
+if __FILE__ == $0
+  Bot2ch::App.new.execute('news4vip')
+end
