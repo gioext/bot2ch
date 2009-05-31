@@ -123,7 +123,11 @@ module Bot2ch
     def execute(subdir)
       root_dir = File.dirname(__FILE__)
       image_dir = "#{root_dir}/images"
-      db = YAML::Store.new("#{root_dir}/log/thread.db")
+      log_dir = "#{root_dir}/log"
+      FileUtils.mkpath(image_dir) unless File.exists?(image_dir)
+      FileUtils.mkpath(log_dir) unless File.exists?(log_dir)
+
+      db = YAML::Store.new("#{log_dir}/thread.db")
       menu = Menu.new
       board = menu.get_board(subdir)
       threads = board.get_threads
@@ -150,6 +154,6 @@ if __FILE__ == $0
   begin
     Bot2ch::App.new.execute('news4vip')
   rescue
-    puts 'Network Error'
+    puts 'Bot Error'
   end
 end
